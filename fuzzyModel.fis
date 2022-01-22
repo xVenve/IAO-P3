@@ -1,0 +1,153 @@
+[System]
+Name='fuzzyModel'
+Type='mamdani'
+Version=2.0
+NumInputs=14
+NumOutputs=1
+NumRules=14
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='cilindrada'
+Range=[800 6000]
+NumMFs=3
+MF1='baja':'gaussmf',[244.9 711.6]
+MF2='media':'gaussmf',[422.215685772583 1540]
+MF3='alta':'gaussmf',[1651.59923684492 5910]
+
+[Input2]
+Name='maletero'
+Range=[0 1500]
+NumMFs=3
+MF1='bajo':'gauss2mf',[3.0767972906479 -56.2787136294028 73.8 138]
+MF2='medio':'gaussmf',[114.9 364.8]
+MF3='alto':'gauss2mf',[336 1138.71849650854 167 1560]
+
+[Input3]
+Name='potencia'
+Range=[5 400]
+NumMFs=4
+MF1='baja':'gaussmf',[50.96 2.5]
+MF2='media':'gaussmf',[31.64 150.2]
+MF3='media_alta':'gaussmf',[21.23 225]
+MF4='alta':'gauss2mf',[22.2681341744149 308.96248085758 74.4 460]
+
+[Input4]
+Name='con_medio'
+Range=[0 30]
+NumMFs=3
+MF1='bajo':'gauss2mf',[0.0255 0 1.11848097615525 2.68759571209801]
+MF2='medio':'gaussmf',[2.081 7.05]
+MF3='alto':'gauss2mf',[1.22353141700295 11.9218989280245 0.0255 30]
+
+[Input5]
+Name='con_urbano'
+Range=[0 30]
+NumMFs=3
+MF1='bajo':'gauss2mf',[1.535 -0.117 1.38806472725829 2.36600306278714]
+MF2='medio':'gaussmf',[1.699 8]
+MF3='alto':'gauss2mf',[1.13510100115791 13.3920367534456 3.4 31]
+
+[Input6]
+Name='con_extraurbano'
+Range=[0 30]
+NumMFs=3
+MF1='bajo':'gauss2mf',[0.02548 0 0.6795 3.2]
+MF2='medio':'gaussmf',[1.274 7]
+MF3='alto':'gauss2mf',[0.61322584165478 10.2220520673813 0.02548 30]
+
+[Input7]
+Name='precio'
+Range=[1000 100000]
+NumMFs=3
+MF1='bajo':'gauss2mf',[84.08 0 2038 6600]
+MF2='medio':'gauss2mf',[5052 16450 5052 24050]
+MF3='alto':'gauss2mf',[3397 39000 11210 107400]
+
+[Input8]
+Name='combustible'
+Range=[0 3]
+NumMFs=4
+MF1='diesel':'trimf',[-1.5 0 0.5]
+MF2='gasolina':'trimf',[0.5 1 1.5]
+MF3='hibrido':'trimf',[1.5 2 2.5]
+MF4='electrico':'trimf',[2.5 3 3.5]
+
+[Input9]
+Name='caja_cambio'
+Range=[0 1]
+NumMFs=2
+MF1='manual':'trimf',[-0.5 0 0.5]
+MF2='automatico':'trimf',[0.5 1 1.5]
+
+[Input10]
+Name='vel_max'
+Range=[120 400]
+NumMFs=3
+MF1='baja':'gauss2mf',[25 97.8 8.81025837689922 179.387442572741]
+MF2='media':'gauss2mf',[6.795 208 6.795 242]
+MF3='alta':'gauss2mf',[8.53198179256862 270.719754977029 35.7 410]
+
+[Input11]
+Name='t_aceleracion'
+Range=[2 25]
+NumMFs=3
+MF1='baja':'gauss2mf',[0.0195 0 0.623811920065961 4.76493108728943]
+MF2='medio':'gauss2mf',[1.36 8.6 0.880435409740041 11.4923430321593]
+MF3='alta':'gauss2mf',[1.04066529672644 13.1125574272588 0.0195 25]
+
+[Input12]
+Name='n_km'
+Range=[0 300000]
+NumMFs=3
+MF1='poco':'gauss2mf',[254.8 0 6795 32000]
+MF2='medio':'gauss2mf',[10190 47000 16270 164800]
+MF3='mucho':'gauss2mf',[20380 194000 254.8 300000]
+
+[Input13]
+Name='etiq_contaminacion'
+Range=[0 4]
+NumMFs=5
+MF1='0':'trimf',[0.5 1 1.5]
+MF2='ECO':'trimf',[1.5 2 2.5]
+MF3='sin':'trimf',[0 0 0.5]
+MF4='B':'trimf',[2.5 3 3.5]
+MF5='C':'trimf',[3.5 4 4]
+
+[Input14]
+Name='traccion'
+Range=[0 2]
+NumMFs=3
+MF1='delantera':'trimf',[-0.5 0 0.5]
+MF2='trasera':'trimf',[0.5 1 1.5]
+MF3='traccion4':'trimf',[1.5 2 2.5]
+
+[Output1]
+Name='recomendacion'
+Range=[0 10]
+NumMFs=5
+MF1='nada':'trimf',[-0.5 1 2.5]
+MF2='muy_recomendable':'trimf',[7.5 9 10.5]
+MF3='poco':'trimf',[1.5 3 4.5]
+MF4='medio':'trimf',[3.5 5 6.5]
+MF5='recomendable':'trimf',[5.5 7 8.5]
+
+[Rules]
+2 -1 2 2 2 1 2 2 1 2 2 1 5 1, 5 (1) : 1
+1 2 2 2 2 1 2 2 1 1 2 1 5 1, 5 (1) : 1
+2 -3 2 2 3 2 1 2 1 2 2 2 3 1, 4 (1) : 1
+2 1 1 2 2 1 1 2 1 2 3 2 5 1, 4 (1) : 1
+3 3 4 3 3 -1 3 2 2 2 1 1 -3 3, 1 (1) : 1
+3 2 4 2 3 2 3 2 2 3 1 1 5 2, 3 (1) : 1
+2 3 1 2 2 2 -3 1 1 1 3 2 4 1, 1 (1) : 1
+2 1 2 3 3 2 1 2 1 1 -1 3 3 1, 1 (1) : 1
+1 1 1 1 2 1 1 2 1 1 -3 2 5 1, 2 (1) : 1
+2 -3 1 2 2 2 1 2 1 1 -1 2 5 1, 2 (1) : 1
+2 2 1 1 1 1 2 1 1 1 2 2 5 1, 5 (1) : 1
+2 2 2 2 2 2 3 2 1 2 2 1 5 3, 3 (1) : 1
+2 2 2 1 1 1 2 3 2 1 2 2 2 1, 2 (1) : 1
+0 3 4 0 0 0 3 4 2 2 1 1 1 3, 3 (1) : 1

@@ -1,0 +1,25 @@
+output =
+
+    8.9320
+    7.0000
+    4.9903
+    8.8180
+    1.1717
+    1.1453
+    8.8593
+    8.9297
+    3.0000
+    8.4976
+	
+output =
+
+    muy_recomendable
+    recomensable
+    medio
+    muy_recomendable
+    nada
+    nada
+    muy_recomendable
+    muy_recomendable
+    poco
+    muy_recomendable
